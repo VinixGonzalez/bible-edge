@@ -5,6 +5,7 @@ import { getVerseById } from './verses/one'
 import { getNextVerse } from './verses/next'
 import { getPreviousVerse } from './verses/previous'
 import { getVersesByBookAndChapter } from './verses/all-by-book-and-chapter'
+import { getVerseOfTheDay } from './verses/verse-of-the-day'
 import { healthCheck } from './health-check'
 
 export async function bibleRoutes(app: FastifyInstance) {
@@ -18,4 +19,5 @@ export async function bibleRoutes(app: FastifyInstance) {
   app.get('/verses/:verseId', getVerseById)
   app.get('/verses/:verseId/next', getNextVerse)
   app.get('/verses/:verseId/previous', getPreviousVerse)
+  app.get('/verses/verse-of-the-day', getVerseOfTheDay)
 }

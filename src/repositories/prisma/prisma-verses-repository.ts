@@ -27,4 +27,16 @@ export class PrismaVersesRepository implements VersesRepository {
       where: { book_id: bookIdNumber, chapter: chapterIdNumber },
     })
   }
+
+  async findRandom() {
+    const verses = await prisma.$queryRaw<Array<{ id: number }>>`
+      SELECT id FROM verses ORDER BY RANDOM() LIMIT 1
+    `
+    if (verses.length === 0) {
+      return null
+    }
+    return await prisma.verse.findUnique({
+      where: { id: verses[0].id },
+    })
+  }
 }

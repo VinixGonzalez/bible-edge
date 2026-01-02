@@ -8,4 +8,5 @@ export interface VersesRepository {
   findById(id: number): Promise<Verse | null>
   findChapterNumbers(bookId: number): Promise<Chapters | null>
   findManyByBookAndChapter(bookId: number, chapterId: number): Promise<Verse[]>
+  findRandom(): Promise<Verse | null>
 }
